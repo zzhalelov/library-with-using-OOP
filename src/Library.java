@@ -11,18 +11,24 @@ public class Library {
     public void takeBook(User user, Book book) {
         try {
             if (books.contains(book)) {
-                books.remove(book);
-                System.out.println(user.getName() + " взял книгу: " + book.getTitle());
+                if (user.getTicket() != null && user.getTicket().getTicketNumber() == book.getSubject().getTicketNumber()) {
+                    books.remove(book);
+                    System.out.println(user.getFirstName() + " взял книгу: " + book.getTitle());
+                } else {
+                    throw new ReaderTicketMismatchException("Читательский билет не совпадает с номером предмета: " + book.getSubject().getTicketNumber());
+                }
             } else {
                 throw new BookNotFoundException("Книга не найдена в библиотеке: " + book.getTitle());
             }
+        } catch (ReaderTicketMismatchException e) {
+            System.err.println(e.getMessage());
         } catch (BookNotFoundException e) {
             System.err.println(e.getMessage());
         }
     }
 
     public void giveBook(Administrator administrator, Book book) {
-        System.out.println(administrator.getName() + " выдал книгу " + book.getTitle());
+        System.out.println(administrator.getFirstName() + " выдал книгу " + book.getTitle());
         books.add(book);
     }
 

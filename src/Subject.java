@@ -8,4 +8,8 @@ public class Subject {
     public String getName() {
         return name;
     }
+
+    public int getTicketNumber() {
+        return 0;
+    }
 }

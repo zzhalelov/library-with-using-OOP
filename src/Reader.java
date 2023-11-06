@@ -1,6 +1,6 @@
 public class Reader extends User {
-    public Reader(String name) {
-        super(name);
+    public Reader(String firstName, ReaderTicket ticket) {
+        super(firstName, ticket);
     }
 
     @Override
