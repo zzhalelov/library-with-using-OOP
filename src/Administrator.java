@@ -1,14 +1,14 @@
 public class Administrator extends User {
-    public Administrator(String name, ReaderTicket ticket) {
-        super(name, ticket);
+    public Administrator(String name) {
+        super(name);
     }
 
     @Override
     public void takeBook(Book book, Library library) {
-        library.takeBook(this, book);
+        library.borrowBook(this, book);
     }
 
-    public void giveBook(Book book, Library library) {
-        library.giveBook(this, book);
+    public void lendBook(Book book, Library library) {
+        library.lendBook(this, book);
     }
 }
